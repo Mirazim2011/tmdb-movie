@@ -1,0 +1,38 @@
+input:invalid[focused="true"] + p {
+  display: block;
+}
+input:invalid[focused="true"] {
+  border: 1px solid red;
+}
+input:valid[focused="true"] {
+  border: 1px solid green;
+}
+label:has(+ input:valid[focused="true"]) {
+  color: green;
+}
+label:has(+ input:invalid[focused="true"]) {
+  color: red;
+}
+@keyframes shake1 {
+  0%,
+  100% {
+    margin-left: 0;
+  }
+  20%,
+  80% {
+    margin-left: -12px;
+  }
+  40%,
+  60% {
+    margin-left: 12px;
+  }
+}
+input:invalid[focused="true"] {
+  animation: shake1 0.3s ease-in-out;
+}
+input:invalid[focused="true"] + p {
+  animation: shake1 0.3s ease-in-out;
+}
+label:has(+ input:invalid[focused="true"]) {
+  animation: shake1 0.3s ease-in-out;
+}
