@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/Auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState(null);
@@ -34,7 +34,7 @@ export default function Login() {
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
               placeholder="Enter your email"
               type="email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={() => setEmail("eve.holt@reqres.in")}
             />
           </div>
           <div className="mb-4">
@@ -44,6 +44,13 @@ export default function Login() {
               type="password"
               onChange={(e) => setPassword(e.target.value)}
             />
+            <p style={{ color: "#4A90E2" }}>
+              Sizda akkaunt yo‘qmi?{" "}
+              <Link to="/register" style={{ color: "#E94E77" }}>
+                Ro‘yxatdan o‘ting
+              </Link>
+            </p>
+
             {error && (
               <p className="text-red-500 text-sm mt-2">
                 Email yoki Parol xato yozilgan!!

@@ -2,29 +2,32 @@ import Item from "../Item/Item";
 import React, { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/Auth";
+import "../../components/Header/Header.css";
 export default function Popular() {
   const { setIsAuthorizated } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const handleClick = () => {
     localStorage.removeItem("token");
     setIsAuthorizated(false);
     navigate("/");
   };
+
   return (
     <div>
       <header className="bg-blue-500 text-white p-4">
-        <nav>
-          <ul className="flex justify-center items-center gap-10 mt-2">
-            <li>
-              <Link to={"/"}>
-                <h1 className="text-xl">Private Page</h1>
-              </Link>
-            </li>
+        <nav className="flex home-list flex-wrap justify-between items-center">
+          <Link to={"/"}>
+            <h1 className="text-xl">Private Page</h1>
+          </Link>
+          <ul className="flex flex-wrap justify-center items-center gap-4 mt-2 md:gap-10 md:mt-0">
             <li className="site-header__item">
               <NavLink
                 to="/popular"
                 className={({ isActive }) =>
-                  isActive ? "active" : "site-header__item-link"
+                  isActive
+                    ? "active text-white"
+                    : "site-header__item-link text-white hover:text-gray-300"
                 }
               >
                 Popular
@@ -34,7 +37,9 @@ export default function Popular() {
               <NavLink
                 to="/toprated"
                 className={({ isActive }) =>
-                  isActive ? "active" : "site-header__item-link"
+                  isActive
+                    ? "active text-white"
+                    : "site-header__item-link text-white hover:text-gray-300"
                 }
               >
                 Top Rated
@@ -44,7 +49,9 @@ export default function Popular() {
               <NavLink
                 to="/upcoming"
                 className={({ isActive }) =>
-                  isActive ? "active" : "site-header__item-link"
+                  isActive
+                    ? "active text-white"
+                    : "site-header__item-link text-white hover:text-gray-300"
                 }
               >
                 Up Coming
@@ -52,7 +59,7 @@ export default function Popular() {
             </li>
             <li>
               <button
-                className="text-xl bg-red-600 p-2 rounded-xl"
+                className="text-xl bg-red-600 p-2 rounded-xl hover:bg-red-700"
                 onClick={handleClick}
               >
                 Log out
